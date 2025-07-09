@@ -8,7 +8,23 @@
 <body class="bg-light">
     <div class="container mt-5">
         <h1 class="mb-4">My TODO List</h1>
-        <p>This is your starting point. We'll add tasks here soon!</p>
+
+        <!-- Task Form -->
+        <form action="/" method="POST" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="task" class="form-control" placeholder="Enter a new task" required>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+
+        <!-- Task List -->
+        <ul class="list-group">
+            {% for task in tasks %}
+            <li class="list-group-item">{{ task }}</li>
+            {% else %}
+            <li class="list-group-item text-muted">No tasks yet.</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
