@@ -20,7 +20,7 @@
         <!-- Task List -->
         <ul class="list-group">
             {% for task in tasks %}
-            <li class="list-group-item">{{ task }}</li>
+            <li class="list-group-item">{{ task.content }}</li>
             {% else %}
             <li class="list-group-item text-muted">No tasks yet.</li>
             {% endfor %}
