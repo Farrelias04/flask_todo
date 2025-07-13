@@ -13,5 +13,5 @@ This project is for learning Flask and practicing web development skills.
 
 1️⃣ Clone the repo  
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git clone https://github.com/Farrelias04/flask_todo.git
 cd flask_todo
