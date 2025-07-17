@@ -17,7 +17,7 @@ def add():
     db.session.commit()
     return redirect("/")
 
-@main.route("/delete/<int:id>", methods=["POST"])
+@main.route("/delete/<int:id>", methods=["GET", "POST"])
 def delete(id):
     task = Task.query.get_or_404(id)
     db.session.delete(task)

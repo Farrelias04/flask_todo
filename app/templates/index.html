@@ -1,48 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>TODO App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body class="bg-light p-5">
     <div class="container mt-5">
-        <h1 class="mb-4">My TODO List</h1>
+        <h2 class="mb-4">My Todo List</h2>
 
         <!-- Task Form -->
-        <form action="/add" method="POST" class="mb-4">
-            <div class="input-group">
-                <input type="text" name="content" class="form-control" placeholder="Enter a new task" required>
-                <button type="submit" class="btn btn-primary">Add</button>
-            </div>
+        <form action="/add" method="post" class="input-group mb-3">
+                <input type="text" name="content" class="form-control" placeholder="Enter a new task..." required>
+                <button type="submit" class="btn btn-primary">Add Task</button>
         </form>
 
         <!-- Task List -->
         <ul class="list-group">
             {% for task in tasks %}
-            <li class="list-group-item d-flex justify-content-between align-items-center
-                {% if task.completed %}list-group-item-success{% endif %}">
-
-                <span style="{% if task.completed %}text-decoration: line-through;{% endif %}">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{ task.content }}
-                </span>
 
-                <div class="d-flex gap-2">
-                    <form action="/complete/{{ task.id }}" method="POST">
-                        <button class="btn btn-sm btn-outline-success">
-                            {% if task.completed %}Undo{% else %}Complete{% endif %}
-                        </button>
-                    </form>
-                    <form action="/delete/{{ task.id }}" method="POST" style="margin: 0,">
-                        <button class="btn btn-sm btn-danger">Delete</button>
-                    </form>
-                    <form action="/edit//{{ task.id }}" method="GET">
-                        <button class="btn btn-sm btn-warning">Edit</button>
-                    </form>
-                </div>
-            </li>
+                    <div>
+                        <a href="/edit//{{ task.id }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a href="/delete/{{ task.id }}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </div>
+                </li>
             {% else %}
-            <li class="list-group-item text-muted">No tasks yet.</li>
+            <li class="list-group-item">No tasks yet!</li>
             {% endfor %}
         </ul>
     </div>
