@@ -39,3 +39,10 @@ def edit(id):
         db.session.commit()
         return redirect("/")
     return render_template("edit.html", task=task)
+
+@main.route("/toggle/<int:task_id>")
+def toggle_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    task.is_done = not task.is_done
+    db.session.commit()
+    return redirect("/")
