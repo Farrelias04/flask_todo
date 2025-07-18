@@ -24,13 +24,6 @@ def delete(id):
     db.session.commit()
     return redirect("/")
 
-@main.route("/complete/<int:id>", methods=["POST"])
-def complete(id):
-    task = Task.query.get_or_404(id)
-    task.completed = not task.completed
-    db.session.commit()
-    return redirect("/")
-
 @main.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
     task = Task.query.get_or_404(id)
